@@ -14,9 +14,7 @@ const App = () => {
     setPlayMode(true);
 
     // When this button is clicked, it should trigger the following
-    // A fresh count starting from 0
     // random lighting for tiles
-    // clickability of tiles
   }
 
   const buttonText = !playMode ? `Let's Play` : `Restart`;
