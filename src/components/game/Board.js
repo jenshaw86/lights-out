@@ -2,7 +2,7 @@ import React from 'react';
 import Tile from './Tile';
 import './Board.css';
 
-const Board = () => {
+const Board = props => {    
     const size = 5;
     const tileCount = Math.pow(size, 2);
 
@@ -10,10 +10,11 @@ const Board = () => {
         let tileArray = [];
         
         for(let i = 1; i <= tileCount; i++) {
-            tileArray.push(<Tile key={i} idx={i}/>)
+            tileArray.push(<Tile key={i} idx={i} playMode={props.playMode}/>)
         }
         return tileArray;
     }
+
 
     return (
         <div className="grid">
