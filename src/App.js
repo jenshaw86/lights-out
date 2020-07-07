@@ -11,8 +11,8 @@ function App() {
         <button>Let's Play</button>
         <button>Sign In</button>
         <button>Score Board</button>
+        <Board />
       </header>
-      <Board />
     </div>
   );
 }
