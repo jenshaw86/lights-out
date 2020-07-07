@@ -10,7 +10,7 @@ const Board = () => {
         let tileArray = [];
         
         for(let i = 1; i <= tileCount; i++) {
-            tileArray.push(<Tile idx={i}/>)
+            tileArray.push(<Tile key={i} idx={i}/>)
         }
         return tileArray;
     }
