@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
 import './Tile.css';
 
 const Tile = props => {
-    
+    const [tileClass, setTileClass] = useState("tile-on");
+
+    useEffect(() => {
+        if (!props.gameOver) {
+            Math.random() <= 0.5 ? setTileClass("tile-on") : setTileClass("tile-off")
+        } else {
+            setTileClass("tile-on");
+        }
+    }, [props.gameOver]);
+
     const handleClick = () => {
         if (props.playMode) {
             console.log("clickety-click!!");
@@ -13,7 +22,7 @@ const Tile = props => {
     }
 
     return (
-        <div className="tile" onClick={handleClick}>Tile {props.idx}</div>
+        <div className={"tile " + tileClass} onClick={handleClick}>Tile {props.idx}</div>
     )
 }
 

@@ -1,4 +1,9 @@
 .tile {
-    background-color: #FEEA49;
     border-radius: 5px;
+}
+.tile-on {
+    background-color: #FEEA49;
+}
+.tile-off {
+    background-color: #23395D;
 }

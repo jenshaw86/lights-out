@@ -5,19 +5,18 @@ import Board from './components/game/Board';
 import Counter from './components/game/Counter';
 
 const App = () => {
-  const [playMode, setPlayMode] = useState(false);
+  const [gameOver, setGameOver] = useState(true);
   const [turnCount, setTurnCount] = useState(0);
 
   const handlePlayButtonClick = () => {
     console.log("Let's Play!!!");
-    setTurnCount(0);
-    setPlayMode(true);
+    setGameOver(true);
 
-    // When this button is clicked, it should trigger the following
-    // random lighting for tiles
+    setTurnCount(0);
+    setGameOver(false);
   }
 
-  const buttonText = !playMode ? `Let's Play` : `Restart`;
+  const buttonText = gameOver ? `Let's Play` : `Restart`;
 
   return (
     <div className="App">
@@ -25,7 +24,7 @@ const App = () => {
         <Title />
         <button onClick={handlePlayButtonClick}>{buttonText}</button>
         <Counter turnCount={turnCount} />
-        <Board playMode={playMode} turnCount={turnCount} setTurnCount={setTurnCount} />
+        <Board gameOver={gameOver} turnCount={turnCount} setTurnCount={setTurnCount} />
       </header>
     </div>
   );
