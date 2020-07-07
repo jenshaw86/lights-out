@@ -1,6 +1,7 @@
 import React from 'react';
+import './Tile.css';
 
-const Tile = props => <div>Tile {props.idx}</div>
+const Tile = props => <div className="tile">Tile {props.idx}</div>
 
 export default Tile;
 
