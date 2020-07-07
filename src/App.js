@@ -14,7 +14,11 @@ const App = () => {
 
     setTurnCount(0);
     setGameOver(false);
+
+    displayCounter();
   }
+
+  const displayCounter = () => gameOver ? null : <Counter turnCount={turnCount} />;
 
   const buttonText = gameOver ? `Let's Play` : `Restart`;
 
@@ -23,7 +27,7 @@ const App = () => {
       <header className="App-header">
         <Title />
         <button onClick={handlePlayButtonClick}>{buttonText}</button>
-        <Counter turnCount={turnCount} />
+        {displayCounter()}
         <Board gameOver={gameOver} turnCount={turnCount} setTurnCount={setTurnCount} />
       </header>
     </div>
