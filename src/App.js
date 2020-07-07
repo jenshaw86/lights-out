@@ -19,11 +19,13 @@ const App = () => {
     // clickability of tiles
   }
 
+  const buttonText = !playMode ? `Let's Play` : `Restart`;
+
   return (
     <div className="App">
       <header className="App-header">
         <Title />
-        <button onClick={handlePlayButtonClick}>Let's Play</button>
+        <button onClick={handlePlayButtonClick}>{buttonText}</button>
         <Counter turnCount={turnCount} />
         <Board playMode={playMode} turnCount={turnCount} setTurnCount={setTurnCount} />
       </header>
