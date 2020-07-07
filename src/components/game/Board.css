@@ -1,5 +1,6 @@
 .grid {
     display: grid;
+/* TODO Write condition in Board.js to resize grid-template according to grid size*/
     grid-template-columns: repeat(5, 100px);
     grid-template-rows: repeat(5, 100px);
 }
