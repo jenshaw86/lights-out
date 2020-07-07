@@ -25,7 +25,7 @@ const App = () => {
         <Title />
         <button onClick={handlePlayButtonClick}>Let's Play</button>
         <Counter turnCount={turnCount} />
-        <Board playMode={playMode}/>
+        <Board playMode={playMode} turnCount={turnCount} setTurnCount={setTurnCount} />
       </header>
     </div>
   );

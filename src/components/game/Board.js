@@ -10,7 +10,7 @@ const Board = props => {
         let tileArray = [];
         
         for(let i = 1; i <= tileCount; i++) {
-            tileArray.push(<Tile key={i} idx={i} playMode={props.playMode}/>)
+            tileArray.push(<Tile key={i} idx={i} playMode={props.playMode} turnCount={props.turnCount} setTurnCount={props.setTurnCount}/>)
         }
         return tileArray;
     }

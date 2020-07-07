@@ -2,9 +2,11 @@ import React from 'react';
 import './Tile.css';
 
 const Tile = props => {
+    
     const handleClick = () => {
         if (props.playMode) {
             console.log("clickety-click!!");
+            props.setTurnCount(props.turnCount + 1);
         } else {
             console.log("MEH");
         }
