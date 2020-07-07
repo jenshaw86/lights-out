@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Title from './components/main/Title'
 import Board from './components/game/Board';
+import Counter from './components/game/Counter';
 
 const App = () => {
   const [playMode, setPlayMode] = useState(false);
@@ -23,6 +24,7 @@ const App = () => {
       <header className="App-header">
         <Title />
         <button onClick={handlePlayButtonClick}>Let's Play</button>
+        <Counter turnCount={turnCount} />
         <Board playMode={playMode}/>
       </header>
     </div>
