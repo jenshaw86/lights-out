@@ -3,28 +3,41 @@ import Tile from './Tile';
 import './Board.css';
 
 const Board = props => {    
-    const [toggledTiles, setToggledTiles] = useState([]);
+    // state
+    const [surroundingTiles, setSurroundingTiles] = useState([]);
 
-    const size = 5;
-    const tileCount = Math.pow(size, 2);
+    // constants
+    const SIZE = 5;
+    const TILE_COUNT = Math.pow(SIZE, 2);
 
-    const activateTiles = tileArray => {
-        setToggledTiles(tileArray);
+    // methods
+    const activateTiles = list => {
+        setSurroundingTiles(list);
     }
 
+    // display handlers
     const populateTiles = () => {
         let tileArray = [];
         
-        for(let i = 1; i <= tileCount; i++) {
-            tileArray.push(<Tile key={i} idx={i} gameOver={props.gameOver} turnCount={props.turnCount} setTurnCount={props.setTurnCount} activateTiles={activateTiles} toggledTiles={toggledTiles}/>)
+        for(let i = 1; i <= TILE_COUNT; i++) {
+            tileArray.push(
+                <Tile 
+                    key={i} 
+                    idx={i} 
+                    gameOver={props.gameOver} 
+                    turnCount={props.turnCount} 
+                    setTurnCount={props.setTurnCount} 
+                    activateTiles={activateTiles} 
+                    surroundingTiles={surroundingTiles} />
+            )
         }
         return tileArray;
     }
 
-
+    // html
     return (
         <div className="grid">
-            {populateTiles()}
+            { populateTiles() }
         </div>
     )
 }

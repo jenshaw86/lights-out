@@ -5,9 +5,11 @@ import Board from './components/game/Board';
 import Counter from './components/game/Counter';
 
 const App = () => {
+  // state
   const [gameOver, setGameOver] = useState(true);
   const [turnCount, setTurnCount] = useState(0);
 
+  // handlers
   const handlePlayButtonClick = () => {
     setGameOver(true);
     setTurnCount(0);
@@ -15,8 +17,10 @@ const App = () => {
     displayCounter();
   }
 
+  // display handlers
   const displayCounter = () => gameOver ? null : <Counter turnCount={turnCount} />;
 
+  // methods
   const buttonText = gameOver ? `Let's Play` : `Restart`;
 
   return (
@@ -24,8 +28,11 @@ const App = () => {
       <header className="App-header">
         <Title />
         <button onClick={handlePlayButtonClick}>{buttonText}</button>
-        {displayCounter()}
-        <Board gameOver={gameOver} turnCount={turnCount} setTurnCount={setTurnCount} />
+        { displayCounter() }
+        <Board 
+          gameOver={gameOver} 
+          turnCount={turnCount} 
+          setTurnCount={setTurnCount} />
       </header>
     </div>
   );

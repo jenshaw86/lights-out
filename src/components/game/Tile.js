@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './Tile.css';
 
 const Tile = props => {
+    // state
     const [tileClass, setTileClass] = useState("tile-on");
+    // props variables
     const idx = props.idx;
-    
+    // constants
     const FAR_LEFT = idx % 5 === 1;
     const FAR_RIGHT = idx % 5 === 0;
     const TOPMOST = idx < 6;
@@ -26,15 +28,17 @@ const Tile = props => {
 
     // toggles tiles surrounding clicked tile
     useEffect(() => {
-        props.toggledTiles.forEach(tile => toggleTile(tile))
-    }, [props.toggledTiles]);
+        props.surroundingTiles.forEach(tile => toggleTile(tile))
+    }, [props.surroundingTiles]);
 
+    // methods
     const toggleTile = tile => {
         if (tile === idx) {
             tileClass === "tile-on" ? setTileClass("tile-off") : setTileClass("tile-on");   
         }
     }
-    const getSurroundingTiles = () => {
+
+    const listTiles = () => {
         let tiles = [];        
         if (!FAR_LEFT) tiles.push(LEFT_TILE);
         if (!FAR_RIGHT) tiles.push(RIGHT_TILE);
@@ -44,11 +48,12 @@ const Tile = props => {
         return tiles;
     }
 
+    // handlers
     const handleClick = () => {
-        if (props.gameOver) {
+        if (!props.gameOver) {
             props.setTurnCount(props.turnCount + 1);
             
-            let tiles = getSurroundingTiles(idx);
+            let tiles = listTiles();
             props.activateTiles(tiles);
         }
     }
