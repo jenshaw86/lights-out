@@ -3,7 +3,18 @@ import './Tile.css';
 
 const Tile = props => {
     const [tileClass, setTileClass] = useState("tile-on");
+    const idx = props.idx;
     
+    const FAR_LEFT = idx % 5 === 1;
+    const FAR_RIGHT = idx % 5 === 0;
+    const TOPMOST = idx < 6;
+    const BOTTOMMOST = idx > 20;
+    
+    const LEFT_TILE = idx - 1;
+    const RIGHT_TILE = idx + 1;
+    const ABOVE_TILE = idx - 5;
+    const BELOW_TILE = idx + 5;
+
     useEffect(() => {
         if (!props.gameOver) {
             console.log("Set game");
@@ -23,16 +34,12 @@ const Tile = props => {
             tileClass === "tile-on" ? setTileClass("tile-off") : setTileClass("tile-on");   
         }
     }
-    const getSurroundingTiles = idx => {
+    const getSurroundingTiles = () => {
         let tiles = [];        
-        // if not leftmost (idx % 5 === 1) then add left tile (idx - 1)
-        if (!(idx % 5 === 1)) tiles.push(idx - 1);
-        // if not rightmost (idx % 5 === 0) then add right tile (idx + 1)
-        if (!(idx % 5 === 0)) tiles.push(idx + 1);
-        // if not top tile (idx < 6) then add top tile (idx - 5)
-        if (!(idx < 6)) tiles.push(idx - 5);
-        // if not bottom tile (idx > 20) then add bottom tile (idx + 5)
-        if (!(idx > 20)) tiles.push(idx + 5);
+        if (!FAR_LEFT) tiles.push(LEFT_TILE);
+        if (!FAR_RIGHT) tiles.push(RIGHT_TILE);
+        if (!TOPMOST) tiles.push(ABOVE_TILE);
+        if (!BOTTOMMOST) tiles.push(BELOW_TILE);
 
         return tiles;
     }
