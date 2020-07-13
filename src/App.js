@@ -9,12 +9,9 @@ const App = () => {
   const [turnCount, setTurnCount] = useState(0);
 
   const handlePlayButtonClick = () => {
-    console.log("Let's Play!!!");
     setGameOver(true);
-
     setTurnCount(0);
     setGameOver(false);
-
     displayCounter();
   }
 
