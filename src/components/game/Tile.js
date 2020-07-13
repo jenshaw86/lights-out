@@ -12,6 +12,7 @@ const Tile = props => {
     const TOPMOST = idx < 6;
     const BOTTOMMOST = idx > 20;
     
+    const CURRENT_TILE = idx;
     const LEFT_TILE = idx - 1;
     const RIGHT_TILE = idx + 1;
     const ABOVE_TILE = idx - 5;
@@ -39,7 +40,7 @@ const Tile = props => {
     }
 
     const listTiles = () => {
-        let tiles = [];        
+        let tiles = [CURRENT_TILE];
         if (!FAR_LEFT) tiles.push(LEFT_TILE);
         if (!FAR_RIGHT) tiles.push(RIGHT_TILE);
         if (!TOPMOST) tiles.push(ABOVE_TILE);
